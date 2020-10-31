@@ -17,9 +17,9 @@ if foldername == "tools": os.chdir("..")
 
 
 data_dir = '/custom_dataset/'
-Dataset_names_path = "model_data/license_plate_names.txt"
-Dataset_train = "model_data/license_plate_train.txt"
-Dataset_test = "model_data/license_plate_test.txt"
+Dataset_names_path = "model_data/components_names.txt"
+Dataset_train = "model_data/components_train.txt"
+Dataset_test = "model_data/components_test.txt"
 is_subfolder = False
 
 Dataset_names = []

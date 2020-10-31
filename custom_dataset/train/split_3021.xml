@@ -1,0 +1,38 @@
+<annotation>
+	<folder>train</folder>
+	<filename>split_3021.JPG</filename>
+	<path>/Users/juli7268/Google Drive/TensorFlow-2.x-YOLOv3/custom_dataset/card-split/train/split_3021.JPG</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>3024</width>
+		<height>4032</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>split-button</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1126</xmin>
+			<ymin>1796</ymin>
+			<xmax>1988</xmax>
+			<ymax>2320</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>split-button</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1102</xmin>
+			<ymin>2703</ymin>
+			<xmax>1998</xmax>
+			<ymax>3193</ymax>
+		</bndbox>
+	</object>
+</annotation>

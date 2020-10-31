@@ -1,0 +1,26 @@
+<annotation>
+	<folder>test</folder>
+	<filename>card_3063.jpg</filename>
+	<path>/Users/juli7268/Google Drive/TensorFlow-2.x-YOLOv3/custom_dataset/card-split/test/card_3063.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>3024</width>
+		<height>4032</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>card</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>836</xmin>
+			<ymin>1600</ymin>
+			<xmax>2395</xmax>
+			<ymax>3462</ymax>
+		</bndbox>
+	</object>
+</annotation>

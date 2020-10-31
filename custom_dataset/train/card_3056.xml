@@ -1,0 +1,38 @@
+<annotation>
+	<folder>train</folder>
+	<filename>card_3056.jpg</filename>
+	<path>/Users/juli7268/Google Drive/TensorFlow-2.x-YOLOv3/custom_dataset/card-split/train/card_3056.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>3024</width>
+		<height>4032</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>card</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>671</xmin>
+			<ymin>48</ymin>
+			<xmax>2105</xmax>
+			<ymax>1796</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>input</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1109</xmin>
+			<ymin>2169</ymin>
+			<xmax>2484</xmax>
+			<ymax>2789</ymax>
+		</bndbox>
+	</object>
+</annotation>

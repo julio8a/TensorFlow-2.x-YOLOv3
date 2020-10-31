@@ -19,7 +19,7 @@ yolo.load_weights("./checkpoints/yolov3_custom") # use keras weights
 print("ready to detect")
 
 class Watcher:
-    DIRECTORY_TO_WATCH = "/home/pi/PiServer/Julio/watcher/"
+    DIRECTORY_TO_WATCH = "/home/pi/PiServer/Julio/machine_learning/watcher/"
 
     def __init__(self):
         self.observer = Observer()
@@ -51,9 +51,9 @@ class Handler(FileSystemEventHandler):
             if "__" not in event.src_path:
                 # *****************************
                 # *****************************
-                print("Analysing image")
-                #detect_image(yolo, event.src_path, "./IMAGES/watchdog.jpg", input_size=YOLO_INPUT_SIZE, show=True, rectangle_colors=(255,0,0))
-                detect_image(yolo, event.src_path, "//IMAGES/watchdog.jpg", input_size=YOLO_INPUT_SIZE, show=True, CLASSES=TRAIN_CLASSES, rectangle_colors=(255,0,0))
+                print("Analysing image...")
+                detect_image(yolo, event.src_path, event.src_path, input_size=YOLO_INPUT_SIZE, show=False, CLASSES=TRAIN_CLASSES, rectangle_colors=(255,0,0))
+                print("Waiting for new image")
                 # ******************************
                 # ******************************
 
@@ -63,7 +63,8 @@ class Handler(FileSystemEventHandler):
 
         elif event.event_type == 'deleted':
             # Taken any action here when a file is deleted.
-            print("Received deleted event - %s." % event.src_path)
+            if "__" not in event.src_path:
+                print("Received deleted event - %s." % event.src_path)
 
 
 if __name__ == '__main__':

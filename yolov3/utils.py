@@ -14,6 +14,7 @@ import time
 import random
 import colorsys
 import numpy as np
+import json
 import tensorflow as tf
 from yolov3.configs import *
 from yolov3.yolov4 import *
@@ -91,7 +92,7 @@ def Load_Yolo_model():
             load_yolo_weights(yolo, Darknet_weights) # use Darknet weights
         else:
             yolo = Create_Yolo(input_size=YOLO_INPUT_SIZE, CLASSES=TRAIN_CLASSES)
-            yolo.load_weights(YOLO_CUSTOM_WEIGHTS) # use custom weights
+            yolo.load_weights("checkpoints/yolov3_custom") # use custom weights
         
     elif YOLO_FRAMEWORK == "trt": # TensorRT detection
         saved_model_loaded = tf.saved_model.load(YOLO_CUSTOM_WEIGHTS, tags=[tag_constants.SERVING])
@@ -135,8 +136,11 @@ def draw_bbox(image, bboxes, CLASSES=YOLO_COCO_CLASSES, show_label=True, show_co
     random.shuffle(colors)
     random.seed(None)
 
+    data = {}
+    data['components'] = []
     for i, bbox in enumerate(bboxes):
         coor = np.array(bbox[:4], dtype=np.int32)
+        coordinates = coor.tolist()
         score = bbox[4]
         class_ind = int(bbox[5])
         bbox_color = rectangle_colors if rectangle_colors != '' else colors[class_ind]
@@ -154,6 +158,7 @@ def draw_bbox(image, bboxes, CLASSES=YOLO_COCO_CLASSES, show_label=True, show_co
 
             if tracking: score_str = " "+str(score)
 
+            classResult = "{}".format(NUM_CLASS[class_ind]) 
             label = "{}".format(NUM_CLASS[class_ind]) + score_str
 
             # get text size
@@ -165,7 +170,15 @@ def draw_bbox(image, bboxes, CLASSES=YOLO_COCO_CLASSES, show_label=True, show_co
             # put text above rectangle
             cv2.putText(image, label, (x1, y1-4), cv2.FONT_HERSHEY_COMPLEX_SMALL,
                         fontScale, Text_colors, bbox_thick, lineType=cv2.LINE_AA)
-
+            data['components'].append({
+                'name': classResult,
+                'score': score_str,
+                'coordinates': coordinates
+            })
+    
+    with open('/home/pi/PiServer/Julio/machine_learning/results.json', 'w') as outfile:
+        json.dump(data, outfile, indent=4, sort_keys=True)
+    print("results.json file saved")
     return image
 
 

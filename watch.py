@@ -7,15 +7,14 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 import cv2
 import numpy as np
 import tensorflow as tf
-from yolov3.yolov4 import Create_Yolo
-from yolov3.utils import load_yolo_weights, detect_image
+from yolov3.utils import detect_image, detect_realtime, detect_video, Load_Yolo_model, detect_video_realtime_mp
 from yolov3.configs import *
 
-Darknet_weights = YOLO_V3_TINY_WEIGHTS if TRAIN_YOLO_TINY else YOLO_V3_WEIGHTS
+image_path   = "./IMAGES/kite.jpg"
+# video_path   = "./IMAGES/test.mp4"
 
 print("Adding weights")
-yolo = Create_Yolo(input_size=YOLO_INPUT_SIZE, CLASSES=TRAIN_CLASSES)
-yolo.load_weights("./checkpoints/yolov3_custom") # use keras weights
+yolo = Load_Yolo_model()
 print("ready to detect")
 
 class Watcher:
@@ -52,7 +51,7 @@ class Handler(FileSystemEventHandler):
                 # *****************************
                 # *****************************
                 print("Analysing image...")
-                detect_image(yolo, event.src_path, event.src_path, input_size=YOLO_INPUT_SIZE, show=False, CLASSES=TRAIN_CLASSES, rectangle_colors=(255,0,0))
+                detect_image(yolo, event.src_path, event.src_path, input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
                 print("Waiting for new image")
                 # ******************************
                 # ******************************
